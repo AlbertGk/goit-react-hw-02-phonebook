@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from 'components/ContactForm';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
+import { RemoveButton } from 'components/RemoveButton';
 
 class App extends Component {
   static defaultProps = {};
@@ -34,7 +35,7 @@ class App extends Component {
         name: '',
         number: '',
       }));
-    };
+    }
     // this.setState({
     //   contacts: [...this.state.contacts, { id: nanoid(), name: this.state.name }],
     //   name: '',
@@ -53,6 +54,11 @@ class App extends Component {
   handleSetFilter = ev => {
     this.setState({ filter: ev.target.value });
   };
+
+  deletionHandler = id => {
+    const newContacts = this.state.contacts.filter((contact) => contact.id !== id);
+    this.setState({ contacts: newContacts });
+  }
 
   render() {
     const { contacts, name, number, filter } = this.state;
@@ -91,7 +97,7 @@ class App extends Component {
           inputName="Filter"
           value={filter}
         />
-        <ContactList contacts={contacts} filter={filter }/>
+        <ContactList contacts={contacts} filter={filter} deletionHandler={this.deletionHandler }/>
       </>
     );
   }
