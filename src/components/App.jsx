@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from 'components/ContactForm';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
-import { RemoveButton } from 'components/RemoveButton';
+// import { RemoveButton } from 'components/RemoveButton';
 
 class App extends Component {
   static defaultProps = {};
